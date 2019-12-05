@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web阅读器</title>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+	</head>
+	<body>
+		<div>
+			<button onclick="loadJSON('./loadJSON.php')">开始阅读</button>
+		</div>
+		<header></header>
+		<aside class="list">
+		</aside>
+		<article class="content">
+			<p></p>
+		</article>
+	</body>
+	<script type="text/javascript">
+		var json = {};
+		/* 获取json格式文章 */
+		function loadJSON(url){
+			var xmlhttp;
+			if (window.XMLHttpRequest) { // for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else { // for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					console.log(xmlhttp.responseText);
+					var result = JSON.parse(xmlhttp.responseText);
+					json = result;
+					/* 构建标题 */
+					var dom = document.getElementsByTagName("header")[0];
+					var h1 = document.createElement("h1");
+					h1.innerHTML = result.title;
+					dom.appendChild(h1);
+					/* 构建目录 */
+					var dom = document.getElementsByTagName("aside")[0];
+					for(var data in result){
+						if(data.search("subject") != -1){
+							var ul = document.createElement("ul");
+							ul.innerHTML = result[data];
+							ul.value = data;
+							ul.onclick = function(){
+								document.getElementsByTagName("p")[0].innerHTML = json["content" + this.value.split("subject")[1]];
+							};
+							dom.appendChild(ul);
+						}
+					}
+				}
+			}
+		}
+	</script>
+</html>

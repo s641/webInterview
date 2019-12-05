@@ -1,0 +1,24 @@
+*{
+	font-size: 30px;
+}
+header{
+	position: absolute;
+	top:15%;
+	width:20%;
+}
+.list{
+	position: absolute;
+	top:20%;
+	width:20%;
+}
+.list ul{
+	font-size: 34px;
+}
+.list li{
+	font-size: 32px;
+}
+.content{
+	position: absolute;
+	left:30%;
+	width:40%;
+}

@@ -1,0 +1,48 @@
+body {	font-size: 20px;}
+.navbar-dark .navbar-nav .nav-link{
+	color: white;
+}
+.navbar {
+	position: absolute;
+	top:0px;
+	width: 100%;
+	z-index: 99;
+}
+.brand {
+	color: white;
+	border: 1px solid white;
+	padding: 5px;
+	margin: 5px;
+}
+.brand:hover {
+	color: white;
+	text-decoration: none;
+}
+#introduction {
+	background: linear-gradient(to bottom,black,white);/* 背景从上到下颜色渐变 */
+	width:100%;
+	height:400px;
+	color: rgba(255,255,255,0.9);/* 字体颜色 */
+}
+#content {
+	position: absolute;
+	top: 16%;
+	left: 16%;
+	width: 68%;
+	text-align: center;
+}
+#content h2:hover {
+	font-size: 2.25rem;/* 设置字体大小为根元素大小的2.25倍 */
+	transition: font-size 1s;/* 鼠标悬停1s内标题字体字号变大 */
+}
+.card{
+	margin: 10px;
+	box-shadow: 1px 1px 5px black;/* 盒阴影 */
+	text-align: center;
+	align-items: center;
+}
+.card-img-top{ 
+	margin-top: 10px;
+	width: 60%;
+}
+.card-text { text-align: center;}
